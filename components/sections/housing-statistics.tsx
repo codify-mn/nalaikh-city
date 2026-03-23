@@ -127,22 +127,12 @@ export default function HousingStatisticSection({ t }: Translate) {
             </CardHeader>
             <CardContent>
               <div className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                <div className="flex items-start gap-2">
-                  <span className="w-1 h-1 rounded-full bg-nalaikh-navy mt-2 shrink-0 dark:bg-nalaikh-gold" />
-                  <span>10,000 өрхийн 1.8% нь чанаргүй зээлдэгч</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="w-1 h-1 rounded-full bg-nalaikh-navy mt-2 shrink-0 dark:bg-nalaikh-gold" />
-                  <span>20 жилийн хугацаанд 180 өрх чанаргүй зээлдэгч болно</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="w-1 h-1 rounded-full bg-nalaikh-navy mt-2 shrink-0 dark:bg-nalaikh-gold" />
-                  <span>Нэг өрхийн ипотекийн зээл: ₮100 сая</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="w-1 h-1 rounded-full bg-nalaikh-navy mt-2 shrink-0 dark:bg-nalaikh-gold" />
-                  <span>Нэг чанаргүй зээлээс: ₮30 сая эрсдэл</span>
-                </div>
+                {(["riskBullet1", "riskBullet2", "riskBullet3", "riskBullet4"] as const).map((key) => (
+                  <div key={key} className="flex items-start gap-2">
+                    <span className="w-1 h-1 rounded-full bg-nalaikh-navy mt-2 shrink-0 dark:bg-nalaikh-gold" />
+                    <span>{t[key]}</span>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>

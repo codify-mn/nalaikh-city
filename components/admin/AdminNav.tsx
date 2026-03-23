@@ -5,11 +5,12 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { useAuth } from "@/lib/auth-client"
 import { Button } from "@/components/ui/button"
-import { 
-  Home, 
-  FileText, 
-  Image, 
-  Users, 
+import {
+  Home,
+  FileText,
+  Image,
+  Users,
+  Briefcase,
   Settings,
   ExternalLink,
   LogOut,
@@ -19,6 +20,7 @@ import {
 const navigation = [
   { name: 'Хяналтын самбар', href: '/admin', icon: Home },
   { name: 'Нийтлэлүүд', href: '/admin/posts', icon: FileText },
+  { name: 'Ажлын байр', href: '/admin/jobs', icon: Briefcase },
   { name: 'Зураг файл', href: '/admin/media', icon: Image },
   { name: 'Хэрэглэгчид', href: '/admin/users', icon: Users },
 ]

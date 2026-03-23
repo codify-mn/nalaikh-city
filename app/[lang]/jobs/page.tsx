@@ -22,6 +22,7 @@ import {
   type LucideIcon,
 } from "lucide-react"
 import type { Language } from "@/lib/translations"
+import CopyEmailButton from "@/components/ui/copy-email-button"
 
 const iconMap: Record<string, LucideIcon> = {
   ruler: Ruler,
@@ -49,6 +50,7 @@ const pageStrings = {
     applyDesc:
       "Дээрх албан тушаалд сонирхолтой бол анкет, CV-гээ дараах хаягаар илгээнэ үү.",
     noJobs: "Одоогоор нээлттэй ажлын байр байхгүй байна.",
+    copied: "Хуулагдсан!",
   },
   en: {
     dateBadge: "March 2026",
@@ -64,6 +66,7 @@ const pageStrings = {
     applyDesc:
       "If you are interested in any of the above positions, please send your CV to the following address.",
     noJobs: "No open positions at this time.",
+    copied: "Copied!",
   },
   zh: {
     dateBadge: "2026年3月",
@@ -77,6 +80,7 @@ const pageStrings = {
     applyTitle: "投递简历",
     applyDesc: "如您对以上职位感兴趣，请将简历发送至以下邮箱。",
     noJobs: "目前没有空缺职位。",
+    copied: "已复制！",
   },
 } as const
 
@@ -225,12 +229,7 @@ export default async function JobsPage({ params }: PageProps) {
               <p className="text-sm text-gray-500 mb-4 dark:text-gray-400">
                 {s.applyDesc}
               </p>
-              <a
-                href="mailto:info@ncdc.mn"
-                className="inline-flex items-center gap-2 bg-nalaikh-navy text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-nalaikh-navy/90 transition-colors"
-              >
-                info@ncdc.mn
-              </a>
+              <CopyEmailButton email="info@ncdc.mn" copiedLabel={s.copied} />
             </div>
           )}
         </div>

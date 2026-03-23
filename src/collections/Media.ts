@@ -8,9 +8,9 @@ const Media: CollectionConfig = {
   },
   access: {
     read: () => true,
-    create: () => true,
-    update: () => true,
-    delete: () => true,
+    create: ({ req }) => Boolean(req.user),
+    update: ({ req }) => Boolean(req.user),
+    delete: ({ req }) => req.user?.role === "admin",
   },
   upload: {
     staticDir: path.resolve(process.cwd(), "public/media"),

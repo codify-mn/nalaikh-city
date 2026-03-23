@@ -93,7 +93,7 @@ export default function Header({ t, language, setLanguage }: Props) {
               setLanguage ? setLanguage(value) : navigateToLanguage(value)
             }
           >
-            <SelectTrigger className="w-16 h-9 text-sm border-gray-200 dark:bg-nalaikh-navy/50 dark:border-nalaikh-gold/30 dark:text-white">
+            <SelectTrigger className="w-20 h-9 text-sm border-gray-200 dark:bg-nalaikh-navy/50 dark:border-nalaikh-gold/30 dark:text-white">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="dark:bg-nalaikh-navy dark:border-nalaikh-gold/30">

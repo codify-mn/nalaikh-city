@@ -12,7 +12,10 @@ const Posts: CollectionConfig = {
     listSearchableFields: ["title", "author", "category", "status"],
   },
   access: {
-    read: () => true,
+    read: ({ req }) => {
+      if (req.user) return true
+      return { status: { equals: "published" } }
+    },
     create: ({ req }) => Boolean(req.user),
     update: ({ req }) => Boolean(req.user),
     delete: ({ req }) => req.user?.role === "admin",

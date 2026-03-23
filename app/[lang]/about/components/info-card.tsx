@@ -10,7 +10,7 @@ export function InfoCard({
   body?: string
 }) {
   return (
-    <Card className="border-none items-center text-center p-6 shadow-lgv text-primary">
+    <Card className="border-none items-center text-center p-6 shadow-lg text-primary">
       <article>{icon}</article>
       <h3 className="text-2xl uppercase font-bold">{title}</h3>
       <p className="text-black text-base">{body}</p>

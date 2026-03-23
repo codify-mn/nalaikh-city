@@ -2,7 +2,7 @@ export type Language = "mn" | "en" | "zh"
 
 export const translations = {
   mn: {
-    topBanner: "Хувийн хэвшлийн хамтын ажиллагааны бүсийн дэлгэрэнгүйг үзэх бол БАГЦ цэс дээр дарна уу. Хамтран ажиллах хүсэлтэй бол ХОЛБОО БАРИХ цэсээр саналаа ирүүлнэ үү.",
+    topBanner: "Хамтран ажиллах хүсэлтэй бол ХОЛБОО БАРИХ цэсээр саналаа ирүүлнэ үү. Нээлттэй ажлын байрыг АЖЛЫН БАЙР цэснээс үзнэ үү.",
     company: "Налайх хотын хөгжлийн корпораци",
     greenNalaikh: "Ногоон Налайх",
     projects: "Төслүүд",
@@ -183,9 +183,14 @@ export const translations = {
     categoryGreenDev: "Ногоон хөгжил",
     categoryHousing: "Орон сууц",
     categoryTechnology: "Технологи",
+    directorMessage: 'Эрхэм хүндэт Налайх дүүргийн иргэд, харилцагч та бүхэндээ энэ өдрийн мэндийг хүргэе. Налайх дүүрэг нь нийслэлийн зүүн хязгаар, уулын бүсэд оршдог бөгөөд түүхэн хөгжлийн хувьд уул уурхай, аж үйлдвэржилтийн төв болж ирсэн. Гэвч сүүлийн жилүүдэд эдийн засгийн бүтэц, нийгмийн орчин өөрчлөгдөж, иргэдийн амьдралын чанар, орчныг сайжруулах шаардлага улам бүр нэмэгдэж байна. Тиймээс бид "Ногоон Налайх" төслийг хэрэгжүүлэхээр зорьж байна. Энэхүү төсөл нь Налайх дүүргийн гэр хорооллыг дахин төлөвлөн, дэд бүтцийг иж бүрнээр шийдсэн, иргэдийн эрүүл, аюулгүй, орчныг бүрдүүлсэн амьдрахад таатай орчин бүрдүүлэхэд чиглэсэн юм.',
+    riskBullet1: "10,000 өрхийн 1.8% нь чанаргүй зээлдэгч",
+    riskBullet2: "20 жилийн хугацаанд 180 өрх чанаргүй зээлдэгч болно",
+    riskBullet3: "Нэг өрхийн ипотекийн зээл: ₮100 сая",
+    riskBullet4: "Нэг чанаргүй зээлээс: ₮30 сая эрсдэл",
   },
   en: {
-    topBanner: "For details on private sector cooperation zones, click the PACKAGES menu. To cooperate, please submit your proposal via CONTACT.",
+    topBanner: "To cooperate, please submit your proposal via CONTACT. View open positions under CAREERS.",
     company: "Nalaikh City Development Corporation",
     greenNalaikh: "Green Nalaikh",
     housing: "Housing",
@@ -367,9 +372,15 @@ export const translations = {
     categoryGreenDev: "Green Development",
     categoryHousing: "Housing",
     categoryTechnology: "Technology",
+    contactDesc: "Nalaikh City Development Corporation LLC",
+    directorMessage: "Dear citizens and partners of Nalaikh District, greetings. Nalaikh District is located on the eastern edge of the capital in a mountainous area and has historically been a center of mining and industrialization. However, in recent years the economic structure and social environment have changed, and the need to improve the quality of life and environment for citizens has been increasing. Therefore, we are committed to implementing the \"Green Nalaikh\" project. This project aims to redesign the ger districts of Nalaikh, provide comprehensive infrastructure solutions, and create a healthy, safe, and pleasant living environment for citizens.",
+    riskBullet1: "1.8% of 10,000 households are non-performing borrowers",
+    riskBullet2: "Over 20 years, 180 households will become non-performing",
+    riskBullet3: "Mortgage per household: ₮100 million",
+    riskBullet4: "Risk per non-performing loan: ₮30 million",
   },
   zh: {
-    topBanner: '如需了解私营部门合作区详情，请点击"套餐"菜单。如有合作意向，请通过"联系"菜单提交您的建议。',
+    topBanner: '如有合作意向，请通过"联系"菜单提交您的建议。如需查看招聘信息，请点击"招聘职位"。',
     company: "Nalaikh City Development Corporation",
     greenNalaikh: "绿色纳来哈",
     housing: "住房",
@@ -538,6 +549,12 @@ export const translations = {
     categoryGreenDev: "绿色发展",
     categoryHousing: "住房",
     categoryTechnology: "技术",
+    contactDesc: "纳来哈市发展公司有限责任公司",
+    directorMessage: '尊敬的纳来哈区居民和合作伙伴，向您致以诚挚的问候。纳来哈区位于首都东部边缘的山区，历史上一直是采矿和工业化的中心。然而，近年来经济结构和社会环境发生了变化，改善居民生活质量和环境的需求日益增加。因此，我们致力于实施"绿色纳来哈"项目。该项目旨在重新规划纳来哈的棚户区，全面解决基础设施问题，为居民创造健康、安全、宜居的生活环境。',
+    riskBullet1: "10,000户中1.8%为不良借款人",
+    riskBullet2: "20年内将有180户成为不良借款人",
+    riskBullet3: "每户按揭贷款：₮1亿",
+    riskBullet4: "每笔不良贷款风险：₮3000万",
   },
 } as const
 

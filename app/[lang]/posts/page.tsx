@@ -45,6 +45,7 @@ export default async function PostsPage({
   const posts = await payload.find({
     collection: "posts",
     where,
+    draft: false,
     limit: 9,
     page: currentPage,
     sort: "-publishedDate",

@@ -31,6 +31,7 @@ async function getPost(slug: string, locale: string) {
       slug: { equals: slug },
       status: { equals: "published" },
     },
+    draft: false,
     limit: 1,
     locale,
   })
