@@ -1,28 +1,48 @@
-"use client"
-
 import CityImage from "@/assets/images/new-nalaikh.jpg"
 import { Translate } from "@/lib/_types"
-import { Leaf } from "lucide-react"
+import { ArrowRight, Leaf } from "lucide-react"
 
 export default function HeroSection({ t }: Translate) {
   return (
-    <section className="relative overflow-hidden isolate bg-gradient-to-br from-nalaikh-light-grey to-blue-50 py-24 md:py-32 dark:from-nalaikh-navy dark:to-gray-900 dark:bg-gradient-to-br">
+    <section className="relative isolate overflow-hidden min-h-[70vh] flex items-end">
+      {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${CityImage.src})` }}
       />
-      <div className="container max-lg:px-3 mx-auto relative z-10  items-center">
-        <div className="bg-white/70 max-w-max p-6 rounded-xl">
-          <div className="inline-flex items-center space-x-2 bg-white/100 px-3 py-1.5 rounded-full text-sm text-primary/80 mb-4 shadow ring-1 ring-gray-200/60 backdrop-blur-md dark:bg-nalaikh-navy/60 dark:text-nalaikh-gold dark:ring-nalaikh-gold/20">
-            <Leaf className="size-5 text-green-600 dark:text-nalaikh-gold" />
+      {/* Gradient overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-t from-nalaikh-navy/90 via-nalaikh-navy/40 to-transparent" />
+
+      <div className="container mx-auto px-4 relative z-10 pb-16 pt-32">
+        <div className="max-w-2xl">
+          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm text-white/90 mb-6 border border-white/20">
+            <Leaf className="size-4" />
             <span>{t.ecoFriendlyCity}</span>
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight text-green-700 mb-5 dark:text-white">
+
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] text-white mb-5">
             {t.heroTitle}
           </h1>
-          <p className="text-xl text-primary/80 leading-relaxed mb-8 max-w-prose dark:text-nalaikh-gold/80">
+
+          <p className="text-lg text-white/80 leading-relaxed mb-8 max-w-xl">
             {t.heroDescription}
           </p>
+
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 bg-white text-nalaikh-navy px-6 py-3 rounded-lg font-semibold text-sm hover:bg-white/90 transition-colors"
+            >
+              {t.viewProjects}
+              <ArrowRight className="size-4" />
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-lg font-semibold text-sm border border-white/20 hover:bg-white/20 transition-colors"
+            >
+              {t.contact}
+            </a>
+          </div>
         </div>
       </div>
     </section>

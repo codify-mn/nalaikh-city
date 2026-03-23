@@ -2,6 +2,7 @@ export type Language = "mn" | "en" | "zh"
 
 export const translations = {
   mn: {
+    topBanner: "Хувийн хэвшлийн хамтын ажиллагааны бүсийн дэлгэрэнгүйг үзэх бол БАГЦ цэс дээр дарна уу. Хамтран ажиллах хүсэлтэй бол ХОЛБОО БАРИХ цэсээр саналаа ирүүлнэ үү.",
     company: "Налайх хотын хөгжлийн корпораци",
     greenNalaikh: "Ногоон Налайх",
     projects: "Төслүүд",
@@ -135,7 +136,7 @@ export const translations = {
     waterFeatures: "Усан байгууламжууд",
     waterFeaturesDesc:
       "Цөөрөм, усан сан, усан парк болон бусад усны элементүүд",
-    housingChallenge: "",
+    housingChallenge: "Орон сууцны хангамж",
     housingChallengeDesc:
       "Налайх хотын орон сууцны хангамж, эрэлтийн өнөөгийн байдал",
     totalHouseholds: "Нийт өрх",
@@ -165,8 +166,26 @@ export const translations = {
     missionBody:
       "Налайх дүүргийн гэр хорооллыг дахин төлөвлөн, дэд бүтцийг иж бүрнээр шийдсэн, иргэдийн эрүүл, аюулгүй, орчныг бүрдүүлсэн амьдрахад таатай орчин бүрдүүлэхэд оршино.",
     directorGreeting: "Захирлын мэндчилгээ",
+
+    // Posts
+    postsTitle: "Мэдээ мэдээлэл",
+    postsDescription: "Налайх хотын хөгжлийн корпорацийн сүүлийн үеийн мэдээ, төслүүд болон шинэчлэлтүүд",
+    allCategories: "Бүх ангилал",
+    readMore: "Дэлгэрэнгүй",
+    backToPosts: "Мэдээ рүү буцах",
+    share: "Хуваалцах",
+    postNotFound: "Мэдээ олдсонгүй",
+    postNotFoundDesc: "Таны хайсан мэдээ олдсонгүй. Буцаж бусад мэдээг үзнэ үү.",
+    noPosts: "Одоогоор мэдээ байхгүй байна",
+    noPostsDesc: "Тун удахгүй шинэ мэдээлэл оруулах болно.",
+    categoryNews: "Мэдээ",
+    categoryProjects: "Төслүүд",
+    categoryGreenDev: "Ногоон хөгжил",
+    categoryHousing: "Орон сууц",
+    categoryTechnology: "Технологи",
   },
   en: {
+    topBanner: "For details on private sector cooperation zones, click the PACKAGES menu. To cooperate, please submit your proposal via CONTACT.",
     company: "Nalaikh City Development Corporation",
     greenNalaikh: "Green Nalaikh",
     housing: "Housing",
@@ -331,8 +350,26 @@ export const translations = {
     missionBody:
       "To redevelop the ger district of Nalaikh, provide comprehensive infrastructure solutions, and create a safe, healthy, and pleasant living environment for citizens.",
     directorGreeting: "Director's Message",
+
+    // Posts
+    postsTitle: "News & Updates",
+    postsDescription: "Latest news, projects and updates from Nalaikh City Development Corporation",
+    allCategories: "All Categories",
+    readMore: "Read More",
+    backToPosts: "Back to Posts",
+    share: "Share",
+    postNotFound: "Post not found",
+    postNotFoundDesc: "The post you're looking for doesn't exist. Go back to browse other posts.",
+    noPosts: "No posts yet",
+    noPostsDesc: "New content will be published soon.",
+    categoryNews: "News",
+    categoryProjects: "Projects",
+    categoryGreenDev: "Green Development",
+    categoryHousing: "Housing",
+    categoryTechnology: "Technology",
   },
   zh: {
+    topBanner: '如需了解私营部门合作区详情，请点击"套餐"菜单。如有合作意向，请通过"联系"菜单提交您的建议。',
     company: "Nalaikh City Development Corporation",
     greenNalaikh: "绿色纳来哈",
     housing: "住房",
@@ -484,6 +521,23 @@ export const translations = {
     missionBody:
       "重新规划纳来哈区的棚户区，全面解决基础设施问题，为居民创造一个健康、安全、宜居的生活环境。",
     directorGreeting: "董事长致辞",
+
+    // Posts
+    postsTitle: "新闻与更新",
+    postsDescription: "纳来哈市发展公司的最新新闻、项目和更新",
+    allCategories: "所有类别",
+    readMore: "阅读更多",
+    backToPosts: "返回文章",
+    share: "分享",
+    postNotFound: "未找到文章",
+    postNotFoundDesc: "您查找的文章不存在。返回浏览其他文章。",
+    noPosts: "暂无文章",
+    noPostsDesc: "新内容即将发布。",
+    categoryNews: "新闻",
+    categoryProjects: "项目",
+    categoryGreenDev: "绿色发展",
+    categoryHousing: "住房",
+    categoryTechnology: "技术",
   },
 } as const
 

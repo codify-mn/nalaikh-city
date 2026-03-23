@@ -1,58 +1,53 @@
-"use client"
-
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import {
-  TreePine,
-  Waves,
-  GraduationCap,
-  Leaf,
-} from "lucide-react"
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { TreePine, Waves, GraduationCap, Leaf } from "lucide-react"
 import { Translate } from "@/lib/_types"
 
+const items = [
+  { key: "greenZone", descKey: "greenZoneDesc", icon: TreePine },
+  { key: "waterFeatures", descKey: "waterFeaturesDesc", icon: Waves },
+  { key: "ecoEducation", descKey: "ecoEducationDesc", icon: GraduationCap },
+  { key: "greenTech", descKey: "greenTechDesc", icon: Leaf },
+]
 
-export default function ProjectDetailSection({t}: Translate) {
+export default function ProjectDetailSection({ t }: Translate) {
   return (
     <section id="green-nalaikh" className="py-20 bg-white dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 dark:text-nalaikh-gold">
-              {t.greenComponents}
-            </h2>
-            <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto dark:text-gray-300">
-              {t.greenComponentsDesc}
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow dark:bg-nalaikh-navy/20 dark:border-nalaikh-gold/20 dark:hover:bg-nalaikh-navy/30">
-              <CardHeader>
-                <TreePine className="h-10 w-10 text-green-600 mb-4 dark:text-nalaikh-gold" />
-                <CardTitle className="dark:text-nalaikh-gold">{t.greenZone}</CardTitle>
-                <CardDescription className="dark:text-gray-300">{t.greenZoneDesc}</CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow dark:bg-nalaikh-navy/20 dark:border-nalaikh-gold/20 dark:hover:bg-nalaikh-navy/30">
-              <CardHeader>
-                <Waves className="h-10 w-10 text-blue-600 mb-4 dark:text-nalaikh-gold" />
-                <CardTitle className="dark:text-nalaikh-gold">{t.waterFeatures}</CardTitle>
-                <CardDescription className="dark:text-gray-300">{t.waterFeaturesDesc}</CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow dark:bg-nalaikh-navy/20 dark:border-nalaikh-gold/20 dark:hover:bg-nalaikh-navy/30">
-              <CardHeader>
-                <GraduationCap className="h-10 w-10 text-purple-600 mb-4 dark:text-nalaikh-gold" />
-                <CardTitle className="dark:text-nalaikh-gold">{t.ecoEducation}</CardTitle>
-                <CardDescription className="dark:text-gray-300">{t.ecoEducationDesc}</CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow dark:bg-nalaikh-navy/20 dark:border-nalaikh-gold/20 dark:hover:bg-nalaikh-navy/30">
-              <CardHeader>
-                <Leaf className="h-10 w-10 text-green-500 mb-4 dark:text-nalaikh-gold" />
-                <CardTitle className="dark:text-nalaikh-gold">{t.greenTech}</CardTitle>
-                <CardDescription className="dark:text-gray-300">{t.greenTechDesc}</CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 dark:text-white">
+            {t.greenComponents}
+          </h2>
+          <p className="text-lg text-gray-500 max-w-2xl mx-auto dark:text-gray-400">
+            {t.greenComponentsDesc}
+          </p>
         </div>
-      </section>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {items.map(({ key, descKey, icon: Icon }) => (
+            <Card
+              key={key}
+              className="border border-gray-100 hover:border-nalaikh-navy/20 transition-colors dark:border-gray-800 dark:hover:border-nalaikh-gold/30"
+            >
+              <CardHeader>
+                <div className="w-11 h-11 bg-nalaikh-navy/8 rounded-lg flex items-center justify-center mb-4 dark:bg-nalaikh-gold/10">
+                  <Icon className="h-5 w-5 text-nalaikh-navy dark:text-nalaikh-gold" />
+                </div>
+                <CardTitle className="text-base dark:text-white">
+                  {t[key as keyof typeof t]}
+                </CardTitle>
+                <CardDescription className="dark:text-gray-400">
+                  {t[descKey as keyof typeof t]}
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }

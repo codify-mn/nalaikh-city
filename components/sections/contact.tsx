@@ -1,5 +1,3 @@
-"use client"
-
 import { Card, CardContent } from "@/components/ui/card"
 import { MapPin, Phone, Mail } from "lucide-react"
 import { Translate } from "@/lib/_types"
@@ -8,93 +6,68 @@ export default function ContactSection({ t }: Translate) {
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900"
+      className="py-20 bg-white dark:bg-gray-900"
     >
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 dark:text-nalaikh-gold">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 dark:text-white">
               {t.contact}
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Office Location */}
-            <Card className="border-0 shadow-xl bg-white dark:bg-nalaikh-navy/20 dark:border-nalaikh-gold/20 hover:shadow-2xl transition-all duration-300">
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="border border-gray-100 dark:border-gray-800">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-nalaikh-navy/10 dark:bg-nalaikh-gold/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <MapPin className="h-8 w-8 text-nalaikh-navy dark:text-nalaikh-gold" />
+                <div className="w-12 h-12 bg-nalaikh-navy/8 rounded-lg flex items-center justify-center mx-auto mb-5 dark:bg-nalaikh-gold/10">
+                  <MapPin className="h-5 w-5 text-nalaikh-navy dark:text-nalaikh-gold" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 dark:text-nalaikh-gold">
+                <h3 className="text-sm font-semibold text-gray-900 mb-3 dark:text-white">
                   {t.officeLocation}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className="text-sm text-gray-500 leading-relaxed dark:text-gray-400">
                   {t.address}
                 </p>
               </CardContent>
             </Card>
 
-            {/* Phone Contact */}
-            <Card className="border-0 shadow-xl bg-white dark:bg-nalaikh-navy/20 dark:border-nalaikh-gold/20 hover:shadow-2xl transition-all duration-300">
+            <Card className="border border-gray-100 dark:border-gray-800">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-nalaikh-navy/10 dark:bg-nalaikh-gold/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Phone className="h-8 w-8 text-nalaikh-navy dark:text-nalaikh-gold" />
+                <div className="w-12 h-12 bg-nalaikh-navy/8 rounded-lg flex items-center justify-center mx-auto mb-5 dark:bg-nalaikh-gold/10">
+                  <Phone className="h-5 w-5 text-nalaikh-navy dark:text-nalaikh-gold" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 dark:text-nalaikh-gold">
+                <h3 className="text-sm font-semibold text-gray-900 mb-3 dark:text-white">
                   {t.phoneContact}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-lg font-medium">
+                <p className="text-base font-medium text-gray-900 dark:text-white">
                   {t.phone}
-                </p>
-                <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">
-                  {t.businessHours}
                 </p>
               </CardContent>
             </Card>
 
-            {/* Email Contact */}
-            <Card className="border-0 shadow-xl bg-white dark:bg-nalaikh-navy/20 dark:border-nalaikh-gold/20 hover:shadow-2xl transition-all duration-300">
+            <Card className="border border-gray-100 dark:border-gray-800">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-nalaikh-navy/10 dark:bg-nalaikh-gold/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Mail className="h-8 w-8 text-nalaikh-navy dark:text-nalaikh-gold" />
+                <div className="w-12 h-12 bg-nalaikh-navy/8 rounded-lg flex items-center justify-center mx-auto mb-5 dark:bg-nalaikh-gold/10">
+                  <Mail className="h-5 w-5 text-nalaikh-navy dark:text-nalaikh-gold" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 dark:text-nalaikh-gold">
+                <h3 className="text-sm font-semibold text-gray-900 mb-3 dark:text-white">
                   {t.emailContact}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-lg font-medium">
+                <p className="text-base font-medium text-gray-900 dark:text-white">
                   info@ncdc.mn
                 </p>
               </CardContent>
             </Card>
           </div>
 
-          {/* Additional Contact Information */}
-          <div className="mt-16 text-center">
-            <div className="bg-nalaikh-navy/5 dark:bg-nalaikh-gold/10 rounded-2xl p-8 max-w-4xl mx-auto">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6 dark:text-nalaikh-gold">
-                {t.partnershipOpportunities}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-6">
-                {t.partnershipDesc}
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <div className="bg-white dark:bg-nalaikh-navy/30 px-6 py-3 rounded-full shadow-md">
-                  <span className="text-nalaikh-navy dark:text-nalaikh-gold font-medium">
-                    {t.greenFinancing}
-                  </span>
-                </div>
-                <div className="bg-white dark:bg-nalaikh-navy/30 px-6 py-3 rounded-full shadow-md">
-                  <span className="text-nalaikh-navy dark:text-nalaikh-gold font-medium">
-                    {t.sustainableDevelopment}
-                  </span>
-                </div>
-                <div className="bg-white dark:bg-nalaikh-navy/30 px-6 py-3 rounded-full shadow-md">
-                  <span className="text-nalaikh-navy dark:text-nalaikh-gold font-medium">
-                    {t.urbanPlanning}
-                  </span>
-                </div>
-              </div>
-            </div>
+          {/* Partnership */}
+          <div className="mt-12 bg-nalaikh-navy/[0.03] rounded-xl p-8 text-center dark:bg-white/[0.04]">
+            <h3 className="text-lg font-semibold text-gray-900 mb-3 dark:text-white">
+              {t.partnershipOpportunities}
+            </h3>
+            <p className="text-sm text-gray-500 max-w-2xl mx-auto dark:text-gray-400">
+              {t.partnershipDesc}
+            </p>
           </div>
         </div>
       </div>

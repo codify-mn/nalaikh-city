@@ -1,15 +1,11 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Roboto } from "next/font/google"
 import "./globals.css"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-})
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const mainFont = Roboto({
+  subsets: ["cyrillic-ext"],
+  preload: true,
+  display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -25,9 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
+      <body className={`${mainFont.className} antialiased bg-background`}>
         {children}
       </body>
     </html>

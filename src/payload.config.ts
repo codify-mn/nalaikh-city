@@ -5,6 +5,7 @@ import path from "path"
 
 import Posts from "./collections/Posts"
 import Media from "./collections/Media"
+import Jobs from "./collections/Jobs"
 
 export default buildConfig({
   admin: {
@@ -17,6 +18,7 @@ export default buildConfig({
   collections: [
     Posts,
     Media,
+    Jobs,
     {
       slug: "users",
       auth: {
@@ -70,7 +72,13 @@ export default buildConfig({
       },
     },
   ],
-  secret: process.env.PAYLOAD_SECRET || "fallback-secret-key",
+  secret: (() => {
+    const s = process.env.PAYLOAD_SECRET
+    if (!s && process.env.NODE_ENV === "production") {
+      throw new Error("PAYLOAD_SECRET environment variable is required in production")
+    }
+    return s || "dev-only-fallback-secret-key-change-me"
+  })(),
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
@@ -106,12 +114,12 @@ export default buildConfig({
   },
   cors: [
     "http://localhost:3000",
-    "https://your-production-domain.com", // Replace with your production domain
-  ],
+    process.env.NEXT_PUBLIC_SITE_URL,
+  ].filter(Boolean) as string[],
   csrf: [
     "http://localhost:3000",
-    "https://your-production-domain.com", // Replace with your production domain
-  ],
+    process.env.NEXT_PUBLIC_SITE_URL,
+  ].filter(Boolean) as string[],
   upload: {
     limits: {
       fileSize: 5 * 1024 * 1024, // 5MB

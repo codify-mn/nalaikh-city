@@ -4,125 +4,68 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Common Development Commands
 
-### Development
-- `npm run dev` - Start development server with Turbopack (includes Payload CMS admin)
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+```bash
+npm run dev           # Start dev server with Turbopack (port 3000)
+npm run build         # Build for production
+npm run lint          # ESLint
+npm run lint:fix      # ESLint with auto-fix
+npm run tsc:check     # TypeScript type checking (tsc --noEmit)
+npm run check:local   # Run tests + lint + type check
+npm run seed          # Seed database (tsx scripts/seed.ts)
+```
 
-### Package Management
-- Uses npm with package-lock.json
-- Node.js packages managed via package.json
-
-### Content Management
-- **Admin Panel**: Access Payload CMS admin at `http://localhost:3000/admin` during development
-- **MongoDB**: Requires MongoDB running locally or connection string in `.env.local`
-- **Media Uploads**: Stored in `/public/media` directory
+**Environment**: Requires `.env.local` with `MONGODB_URI` and `PAYLOAD_SECRET`.
 
 ## Architecture Overview
 
-### Tech Stack
-- **Framework**: Next.js 15.2.4 with App Router
-- **CMS**: Payload CMS v3.51.0 with MongoDB adapter
-- **Database**: MongoDB with Mongoose ODM
-- **Language**: TypeScript with strict mode
-- **Styling**: TailwindCSS v4.1.12 with custom CSS variables
-- **UI Components**: Custom components built with Radix UI primitives
-- **Icons**: Lucide React
-- **Fonts**: Geist and Geist Mono (Google Fonts)
-- **Rich Text**: Lexical editor for content creation
+Next.js 15 App Router + Payload CMS v3 (MongoDB) site for Nalaikh City Development Corporation ("Ногоон Налайх" / Green Nalaikh project).
 
-### Project Structure
-```
-app/                    # Next.js App Router pages
-├── (admin)/           # Payload CMS admin routes (isolated layout)
-├── api/               # API routes for Payload and posts
-├── posts/             # Posts listing and detail pages
-├── globals.css        # Global styles with CSS variables
-├── layout.tsx         # Root layout with metadata
-└── page.tsx           # Main homepage component
-components/
-├── ui/                # Reusable UI components (shadcn/ui style)
-│   ├── badge.tsx
-│   ├── button.tsx
-│   ├── card.tsx
-│   └── select.tsx
-lib/
-└── utils.ts           # Utilities (cn function for class merging)
-src/                   # Payload CMS configuration
-├── collections/       # CMS collection schemas
-└── payload.config.ts  # Payload configuration
-assets/
-├── images/            # Static images
-└── logos/             # Brand logos
-public/
-└── media/             # CMS uploaded media files
-```
+### Routing: Two Parallel Layout Trees
 
-### Design System & Theming
-- Uses CSS custom properties for theming in globals.css
-- Supports light/dark mode with `.dark` class variant
-- Custom Nalaikh District brand colors defined:
-  - `--nalaikh-navy`: #002868 (primary brand color)
-  - `--nalaikh-gold`: Brand accent color
-  - `--nalaikh-red`: Supporting brand color
-- TailwindCSS configured via components.json (shadcn/ui style)
-- Base color: gray, CSS variables enabled
+The app has two independent layout hierarchies:
 
-### Key Features
-- **Content Management**: Payload CMS with Posts and Media collections
-- **Multilingual Support**: Built-in i18n with Mongolian (mn), English (en), and Chinese (zh) translations
-- **Theme Toggle**: Light/dark mode switching
-- **Responsive Design**: Mobile-first responsive layouts
-- **Component Architecture**: Modular UI components with TypeScript
-- **Brand Integration**: Custom styling for Nalaikh City Development Corporation
-- **Rich Content**: Posts with categories, tags, SEO fields, and image uploads
+1. **Public site** (`app/[lang]/`) — locale-parameterized pages with Header/Footer, uses Roboto font (cyrillic-ext). Root `app/page.tsx` redirects `/` → `/mn`.
+2. **Custom admin** (`app/admin/`) — separate layout, protected by middleware auth (`middleware.ts` checks `payload-token` cookie against Payload's `/api/payload/users/me`). Login at `/login`, unauthorized redirect at `/unauthorized`.
+3. **Payload admin** (`app/(admin)/`) — Payload CMS's built-in admin panel.
 
-### Component Patterns
-- UI components follow shadcn/ui patterns with Radix UI primitives
-- Utility-first CSS with Tailwind
-- TypeScript interfaces for props and state
-- Custom CSS variables for consistent theming
-- Compound component patterns (Card, Select, etc.)
+There is also a legacy `app/posts/` route (outside `[lang]`) for posts.
 
-### Content Management System (Payload CMS)
+### i18n System
 
-#### Collections
-- **Posts**: Blog posts/news with multilingual support
-  - Fields: title, slug, author, content (Lexical), category, tags, featured image
-  - Categories: news, projects, green-development, housing, technology
-  - Status: draft, published, archived
-  - SEO fields for meta title/description
-- **Media**: File uploads with automatic image resizing
-  - Generates thumbnail, card, and tablet sizes
-  - Stored in `/public/media`
-- **Users**: Admin authentication system
-  - Roles: admin, editor
+- **Locales**: `mn` (default), `en`, `zh` — defined in both `lingui.config.ts` and `src/payload.config.ts`
+- **Frontend translations**: `lib/translations.ts` — a single flat object keyed by locale, NOT Lingui catalog files. `lib/i18n.ts` wraps this into Lingui catalogs.
+- **Pattern**: Pages receive `params.lang`, call `getT(language)` to get a `Record<string, string>`, pass `t` as prop to section components. Components access strings as `t.keyName`.
+- **Types**: `lib/_types.ts` defines `Params`, `PageProps`, `Translate` used across pages/components.
 
-#### API Endpoints
-- `/api/posts` - List posts with filtering and pagination
-- `/api/posts/[slug]` - Get single post by slug
-- `/api/payload/[...slug]` - Main Payload API handler
-- Admin panel at `/admin` (isolated layout)
+### Payload CMS Configuration (`src/payload.config.ts`)
 
-#### Configuration
-- MongoDB database with Mongoose ODM
-- Lexical rich text editor for content
-- Multilingual content (mn, en, zh)
-- Image optimization with Sharp
-- CORS and CSRF protection configured
+- **Collections**: `Posts` (`src/collections/Posts.ts`), `Media` (`src/collections/Media.ts`), `Users` (inline)
+- **Database**: MongoDB via `@payloadcms/db-mongodb`, dbName `nalaikh-city`
+- **Rich text**: Lexical editor
+- **Localization**: mn/en/zh with fallback enabled
+- **Upload limit**: 5MB
+- **API**: `/api/payload/[...slug]` handles all Payload REST endpoints; custom `/api/posts` for public post listing
 
-### Development Notes
-- Uses `@/*` path alias pointing to root directory
-- ESLint configured with Next.js and TypeScript presets
-- Strict TypeScript configuration with ES2017 target
-- Custom font loading with next/font optimization
-- Image assets stored in assets/ directory (not public/)
-- **Environment**: Requires `.env.local` with `MONGODB_URI` and `PAYLOAD_SECRET`
+### Component Organization
 
-### Styling Approach
-- TailwindCSS v4 with new syntax (`@import "tailwindcss"`)
-- Custom CSS variables for design system consistency
-- Dark mode support with `dark:` variants
-- Component-scoped styling patterns
-- Responsive breakpoints: sm, md, lg prefixes
+- `components/sections/` — page-level sections (hero, footer, header, contact, etc.) that receive `t` translation prop
+- `components/ui/` — reusable primitives (shadcn/ui pattern with Radix UI + CVA)
+- `components/admin/` — admin-specific components (AdminNav, ImageUpload, MediaBrowser)
+
+### Styling
+
+- TailwindCSS v4 with `@import "tailwindcss"` syntax
+- Brand colors as CSS variables in `app/globals.css`: `--nalaikh-navy` (#002868), `--nalaikh-gold`, `--nalaikh-red`
+- Light/dark mode via `.dark` class variant
+- shadcn/ui component config in `components.json`
+
+### Path Aliases
+
+- `@/*` → project root
+- `@payload-config` → `./src/payload.config.ts`
+
+### Key Conventions
+
+- All user-facing strings are in Mongolian (Cyrillic) by default
+- No test suite currently configured (test script is a no-op)
+- Media uploads stored in `/public/media`
