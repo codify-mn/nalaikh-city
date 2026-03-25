@@ -108,10 +108,14 @@ export default buildConfig({
   },
   cors: [
     "http://localhost:3000",
+    "https://ncdc.mn",
+    "https://www.ncdc.mn",
     process.env.NEXT_PUBLIC_SITE_URL,
   ].filter(Boolean) as string[],
   csrf: [
     "http://localhost:3000",
+    "https://ncdc.mn",
+    "https://www.ncdc.mn",
     process.env.NEXT_PUBLIC_SITE_URL,
   ].filter(Boolean) as string[],
   upload: {
