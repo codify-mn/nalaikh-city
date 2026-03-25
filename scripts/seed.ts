@@ -20,8 +20,7 @@ async function seed() {
 
     if (existingUsers.docs.length > 0) {
       console.log('ℹ️  Admin user already exists')
-      return
-    }
+    } else {
 
     // Create default admin user
     const adminUser = await payload.create({
@@ -35,11 +34,12 @@ async function seed() {
       }
     })
 
-    console.log('✅ Created admin user:', {
-      id: adminUser.id,
-      email: adminUser.email,
-      role: adminUser.role
-    })
+      console.log('✅ Created admin user:', {
+        id: adminUser.id,
+        email: adminUser.email,
+        role: adminUser.role
+      })
+    }
 
     // Create sample posts if none exist
     const existingPosts = await payload.find({
