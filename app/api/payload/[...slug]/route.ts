@@ -1,5 +1,5 @@
 import { REST_DELETE, REST_GET, REST_PATCH, REST_POST } from '@payloadcms/next/routes'
-import configPromise from '../../../../src/payload.config'
+import configPromise from '@payload-config'
 
 export const dynamic = 'force-dynamic'
 

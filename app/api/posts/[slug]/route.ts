@@ -1,5 +1,5 @@
-import { getPayloadHMR } from '@payloadcms/next/utilities'
-import configPromise from '../../../../src/payload.config'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
 import { NextRequest, NextResponse } from 'next/server'
 
 export const dynamic = 'force-dynamic'
@@ -9,7 +9,7 @@ export async function GET(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const payload = await getPayloadHMR({ config: configPromise })
+    const payload = await getPayload({ config: configPromise })
     const searchParams = request.nextUrl.searchParams
     const locale = searchParams.get('locale') || 'mn'
 

@@ -1,5 +1,5 @@
-import { getPayloadHMR } from "@payloadcms/next/utilities"
-import configPromise from "../../../../src/payload.config"
+import { getPayload } from "payload"
+import configPromise from "@payload-config"
 import { getT } from "@/lib/i18n"
 
 export const dynamic = 'force-dynamic'
@@ -26,7 +26,7 @@ interface PostPageProps {
 }
 
 async function getPost(slug: string, locale: string) {
-  const payload = await getPayloadHMR({ config: configPromise })
+  const payload = await getPayload({ config: configPromise })
   const posts = await payload.find({
     collection: "posts",
     where: {

@@ -1,5 +1,5 @@
-import { getPayloadHMR } from "@payloadcms/next/utilities"
-import configPromise from "../../../src/payload.config"
+import { getPayload } from "payload"
+import configPromise from "@payload-config"
 import { getT } from "@/lib/i18n"
 
 export const dynamic = 'force-dynamic'
@@ -91,7 +91,7 @@ export default async function JobsPage({ params }: PageProps) {
   const t = getT(lang)
   const s = pageStrings[lang]
 
-  const payload = await getPayloadHMR({ config: configPromise })
+  const payload = await getPayload({ config: configPromise })
 
   const jobs = await payload.find({
     collection: "jobs",
