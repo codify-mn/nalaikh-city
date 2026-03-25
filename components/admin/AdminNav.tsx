@@ -76,8 +76,8 @@ export default function AdminNav() {
               Сайт үзэх
             </Link>
             
-            {!loading && user && (
-              <div className="flex items-center gap-3 border-l border-gray-200 pl-4">
+            <div className="flex items-center gap-3 border-l border-gray-200 pl-4">
+              {!loading && user && (
                 <div className="flex items-center gap-2 text-sm">
                   <User className="h-4 w-4 text-gray-500" />
                   <span className="text-gray-700">
@@ -87,18 +87,18 @@ export default function AdminNav() {
                     {user.role}
                   </span>
                 </div>
-                
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => logout()}
-                  className="gap-2 text-gray-600 hover:text-red-600"
-                >
-                  <LogOut className="h-4 w-4" />
-                  Гарах
-                </Button>
-              </div>
-            )}
+              )}
+
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => logout()}
+                className="gap-2 text-gray-600 hover:text-red-600"
+              >
+                <LogOut className="h-4 w-4" />
+                Гарах
+              </Button>
+            </div>
           </div>
         </div>
       </div>
