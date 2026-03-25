@@ -1,6 +1,8 @@
 import { getPayloadHMR } from "@payloadcms/next/utilities"
 import configPromise from "../../../src/payload.config"
 import { getT } from "@/lib/i18n"
+
+export const dynamic = 'force-dynamic'
 import { PageProps } from "@/lib/_types"
 import { Badge } from "@/components/ui/badge"
 import {

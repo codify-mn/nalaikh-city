@@ -1,6 +1,8 @@
 import { getPayloadHMR } from "@payloadcms/next/utilities"
 import configPromise from "../../../../src/payload.config"
 import { getT } from "@/lib/i18n"
+
+export const dynamic = 'force-dynamic'
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"

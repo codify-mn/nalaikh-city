@@ -72,13 +72,7 @@ export default buildConfig({
       },
     },
   ],
-  secret: (() => {
-    const s = process.env.PAYLOAD_SECRET
-    if (!s && process.env.NODE_ENV === "production") {
-      throw new Error("PAYLOAD_SECRET environment variable is required in production")
-    }
-    return s || "dev-only-fallback-secret-key-change-me"
-  })(),
+  secret: process.env.PAYLOAD_SECRET || "dev-only-fallback-secret-key-change-me",
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },

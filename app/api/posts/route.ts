@@ -1,6 +1,8 @@
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import configPromise from '../../../src/payload.config'
 import { NextRequest, NextResponse } from 'next/server'
+
+export const dynamic = 'force-dynamic'
 import { Where } from 'payload'
 
 export async function GET(request: NextRequest) {
